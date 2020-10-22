@@ -22,6 +22,7 @@
     <!-- <router-view/> -->
     <!-- <table1></table1> -->
     <form-test></form-test>
+    hello world
   </div>
 </template>
 
