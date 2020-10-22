@@ -1,40 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- <router-link to="/">Home </router-link>
-      <router-link to="/about">About</router-link> -->
-      <!-- <div @click="homeClick">首页</div>
-      <div @click="aboutClick">关于页</div>
-      <div @click="adminClick">管理页</div>
-      <span v-if="isLogin">{{ welcome }}</span> -->
-    </div>
-    <!-- <slot-test>我是匿名插槽里面的内容</slot-test>
-    <slot-test>
-      <template v-slot:header>
-        我是具名插槽里面的内容
-      </template>
-    </slot-test>
-    <slot-test>
-      <template v-slot:footer="{ foo }">
-        我是作用域插槽里面的内容{{ foo }}
-      </template>
-    </slot-test> -->
-    <!-- <router-view/> -->
-    <!-- <table1></table1> -->
-    <form-test></form-test>
+
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-// import SlotTest from './views/SlotTest'
-// import table1 from './views/table1'
-import FormTest from './views/FormTest'
 export default {
   components: {
-    // SlotTest
-    // table1
-    FormTest
   },
   computed: {
     ...mapState('user', ['isLogin']),

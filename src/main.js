@@ -3,14 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
-import create from './utils/create'
 import './styles.scss'
 
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
-Vue.use(create)
 
 new Vue({
   router,
