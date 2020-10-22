@@ -5,24 +5,12 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
 export default {
   components: {
   },
   computed: {
-    ...mapState('user', ['isLogin']),
-    ...mapGetters('user', ['welcome'])
   },
   methods: {
-    homeClick() {
-      this.$router.push({name: 'Home'})
-    },
-    aboutClick() {
-      this.$router.push({name: 'About'})
-    },
-    adminClick() {
-      this.$router.push({path: '/Admin'})
-    }
   },
 }
 </script>
