@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- <router-link to="/">Home </router-link>
-      <router-link to="/about">About</router-link> -->
+      <router-link to="/">Home </router-link>
+      <router-link to="/about">About</router-link>
+      <router-view></router-view>
       <!-- <div @click="homeClick">首页</div>
       <div @click="aboutClick">关于页</div>
       <div @click="adminClick">管理页</div>
@@ -21,7 +22,7 @@
     </slot-test> -->
     <!-- <router-view/> -->
     <!-- <table1></table1> -->
-    <form-test></form-test>
+    <!-- <form-test></form-test> -->
   </div>
 </template>
 
@@ -29,12 +30,12 @@
 import { mapState, mapGetters } from 'vuex'
 // import SlotTest from './views/SlotTest'
 // import table1 from './views/table1'
-import FormTest from './views/FormTest'
+// import FormTest from './views/FormTest'
 export default {
   components: {
     // SlotTest
     // table1
-    FormTest
+    // FormTest
   },
   computed: {
     ...mapState('user', ['isLogin']),
