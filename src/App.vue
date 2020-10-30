@@ -2,14 +2,17 @@
   <div id="app">
     测试分支
     <GithubLogo></GithubLogo>
+    <MouseWheelScroll></MouseWheelScroll>
   </div>
 </template>
 
 <script>
 import GithubLogo from '@/views/GithubLogo'
+import MouseWheelScroll from '@/views/MouseWheelScroll';
 export default {
   components: {
-    GithubLogo
+    GithubLogo,
+    MouseWheelScroll
   },
   data() {
     return {
