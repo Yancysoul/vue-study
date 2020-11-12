@@ -10,8 +10,6 @@ export default {
   components: {
     TableUtil
   },
-  computed: {
-  },
   data() {
     return {
       datas: {
@@ -62,14 +60,16 @@ export default {
       }
     }
   },
+  computed: {
+  },
   created() {
     this.$axios.get('http://rap2api.taobao.org/app/mock/259420/get/nis-test').then(res => {
-      console.log(res);
+      console.log(res)
       this.datas.lists = res.data.data
     })
   },
   methods: {
-  },
+  }
 }
 </script>
 

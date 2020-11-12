@@ -11,24 +11,25 @@
         :label="column.label"
         :prop="column.prop"
         :width="column.width"
-      ></el-table-column>
+      />
     </el-table>
   </div>
 </template>
 
 <script>
-  export default {
-    props: {
-      datas: {
-        type: Object,
-        require: true
-      },
-      height: {
-        type: String,
-        default: '100%'
-      }
+export default {
+  props: {
+    // eslint-disable-next-line vue/require-default-prop
+    datas: {
+      type: Object,
+      require: true
+    },
+    height: {
+      type: String,
+      default: '100%'
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
