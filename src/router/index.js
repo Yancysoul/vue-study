@@ -13,8 +13,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to);
-  console.log(store);
+  console.log(to)
+  console.log(store)
   if (to.path !== from.path) {
     if (to.meta.auth) {
       if (store.state.user.isLogin) {
@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
 })
 
 const originalPush = VueRouter.prototype.push
-  VueRouter.prototype.push = function push(location) {
+VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
