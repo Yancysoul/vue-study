@@ -9,7 +9,7 @@ function defineReactive(obj, key, val) {
 
   Object.defineProperty(obj, key, {
     get() {
-      console.log('get', key)
+      // console.log('get', key)
       // 依赖收集：把watcher和dep关联
       // 希望Watcher实例化时，访问一下对应key，同时把这个实例设置到Dep.target上面
       Dep.target && dep.addDep(Dep.target)
@@ -17,7 +17,7 @@ function defineReactive(obj, key, val) {
     },
     set(newVal) {
       if (newVal !== val) {
-        console.log('set', key, newVal)
+        // console.log('set', key, newVal)
         observe(newVal)
         val = newVal
 
@@ -65,7 +65,7 @@ class Compiler {
   compile(el) {
     // 遍历这个el
     el.childNodes.forEach(node => {
-      // 判断是否是元素
+      // 判断是否是元素，如果node.nodeType === 1的话，则表示该节点是一个元素
       if (node.nodeType === 1) {
         // console.log('编译元素', node.nodeName)
         this.compileElement(node)
@@ -143,6 +143,15 @@ class Compiler {
   isInter(node) {
     return node.nodeType === 3 && /\{\{(.*)\}\}/.test(node.textContent)
   }
+  /* 
+    RegExp是javascript中的一个内置对象，为正则表达式。
+    RegExp.$1是RegExp的一个属性，值得是正则表达式匹配的第一个子匹配（以括号为标志）字符串，以此类推，RegExp.$2、RegExp.$3、...RegExp.$99总共可以有99个匹配
+    var reg = /\{\{(.*)\}\}/;
+    var text = "{{word}}";
+    reg.test(text);
+
+    RegExp.$1 //"word"
+  */
 }
 
 // 代理data中的数据
