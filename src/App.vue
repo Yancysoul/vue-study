@@ -1,6 +1,23 @@
 <template>
   <div id="app">
-    <table-util style="width: 1200px; height: 400px;" height="100%" :datas="datas" />
+    <table-util
+      style="width: 1200px; height: 400px"
+      height="100%"
+      :datas="datas"
+      :is-selection="true"
+      :handle-row-class-name="handleRowClassName"
+      @row-click="rowClick"
+      @selection-change="selectionChange"
+    />
+    <table-util
+      style="width: 1200px; height: 400px"
+      height="100%"
+      :datas="datas"
+      :is-selection="true"
+      :single-choice="false"
+      @row-click="rowClick"
+      @select="select"
+    />
   </div>
 </template>
 
@@ -26,7 +43,8 @@ export default {
           }, {
             label: '性别',
             prop: 'sex',
-            width: '200px'
+            width: '200px',
+            renderHeader: this.sexRenderHeader
           }, {
             label: '姓名',
             prop: 'name',
@@ -38,7 +56,8 @@ export default {
           }, {
             label: '体重',
             prop: 'weight',
-            width: '200px'
+            width: '200px',
+            sortable: true
           }, {
             label: '是否婚配',
             prop: 'marriage',
@@ -64,11 +83,41 @@ export default {
   },
   created() {
     this.$axios.get('http://rap2api.taobao.org/app/mock/259420/get/nis-test').then(res => {
-      console.log(res)
+      // console.log(res)
       this.datas.lists = res.data.data
     })
   },
   methods: {
+    handleRowClassName({ row, rowIndex }) {
+      if (row.sex === 1) {
+        return 'success-class'
+      } else {
+        return 'error-class'
+      }
+    },
+    sexRenderHeader(h, { column, $index }) {
+      const _this = this
+      return h('span', {
+        on: {
+          click: function() {
+            _this.sexClick()
+          }
+        },
+        class: 'sex-header'
+      }, column.label)
+    },
+    sexClick(val) {
+      console.log('点击了性别')
+    },
+    rowClick(row) {
+      console.log(row)
+    },
+    selectionChange(list) {
+      console.log(list)
+    },
+    select(selection, row) {
+      console.log(selection, row)
+    }
   }
 }
 </script>
@@ -93,5 +142,14 @@ export default {
       color: #42b983;
     }
   }
+}
+.sex-header {
+  color: red;
+}
+.success-class {
+  color: green;
+}
+.error-class {
+  color: red;
 }
 </style>
